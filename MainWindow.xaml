@@ -1,0 +1,30 @@
+﻿<Window x:Class="SfDataGridDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:local="clr-namespace:SfDataGridDemo"
+        Title="SfDataGrid Demo"
+        Width="790"
+        Height="550"
+        Icon="App.ico"
+        WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <local:ViewModel/> 
+    </Window.DataContext>
+ 
+    <Grid>
+        <syncfusion:SfDataGrid x:Name="sfDataGrid" 
+                               ItemsSource="{Binding Path=Orders}"
+                               AllowFiltering="True"
+                               FilterRowPosition="Top"
+                               AutoGenerateColumns="False">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn MappingName="OrderID"/>
+                <syncfusion:GridTextColumn MappingName="OrderDay" FilterRowEditorType="TextBoxExt" />
+                <syncfusion:GridTextColumn MappingName="CustomerName" />
+                <syncfusion:GridTextColumn MappingName="Country" />
+                <syncfusion:GridCurrencyColumn MappingName="UnitPrice"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>
+</Window>
