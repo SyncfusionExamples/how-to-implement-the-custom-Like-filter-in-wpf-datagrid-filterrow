@@ -201,5 +201,7 @@ public class CustomRowGenerator : RowGenerator
 
 ![CustomFilteredGrid](image2.png)
 
+KB article - [How to implement the custom Like filter in WPF DataGrid (SfDataGrid) FilterRow?](https://www.syncfusion.com/kb/11880/how-to-implement-the-custom-like-filter-in-wpf-datagrid-sfdatagrid-filterrow)
+
 ## Requirements to run the demo
 Visual Studio 2015 and above versions
