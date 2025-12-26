@@ -1,13 +1,10 @@
-# How to implement the custom Like filter in WPF DataGrid (SfDataGrid) FilterRow? 
-
-## About the sample
+# How to Implement the Custom Like Filter in WPF DataGrid FilterRow? 
 
 This sample illustrates how to implement the custom Like filter in [WPF DataGrid](https://www.syncfusion.com/wpf-ui-controls/datagrid) (SfDataGrid) FilterRow.
 
-The textBox editor will display the string related conditions like Begins With, Does Not Begin With, Ends With, Does Not End With, Contains, Does Not Contain, Empty, Not Empty filter row conditions in drop down by default in [WPF DataGrid](https://www.syncfusion.com/wpf-ui-controls/datagrid) (SfDataGrid). You can display custom filter row conditions (Like and Not Like) in TextBox editor by overriding the [OpenFilterOptionPopup](http://help.syncfusion.com/cr/cref_files/wpf/Syncfusion.SfGrid.WPF~Syncfusion.UI.Xaml.Grid.RowFilter.GridFilterRowCell~OpenFilterOptionPopup.html) method in a [GridFilterRowCell](http://help.syncfusion.com/cr/cref_files/wpf/Syncfusion.SfGrid.WPF~Syncfusion.UI.Xaml.Grid.RowFilter.GridFilterRowCell.html) class.
+The `TextBox` editor will display the string related conditions like Begins With, Does Not Begin With, Ends With, Does Not End With, Contains, Does Not Contain, Empty, Not Empty filter row conditions in drop down by default in `DataGrid`. You can display custom filter row conditions (Like and Not Like) in TextBox editor by overriding the [OpenFilterOptionPopup](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.RowFilter.GridFilterRowCell.html#Syncfusion_UI_Xaml_Grid_RowFilter_GridFilterRowCell_OpenFilterOptionPopup) method in a [GridFilterRowCell](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.RowFilter.GridFilterRowCell.html) class.
 
 ```c#
-
 public partial class MainWindow : Window
 {
     public MainWindow()
@@ -23,14 +20,14 @@ public partial class MainWindow : Window
 public class GridFilterRowCellExt : GridFilterRowCell
 {
 
-    public GridFilterRowCellExt()
-        : base()
-    { }
+    public GridFilterRowCellExt() : base()
+    { 
+
+    }
 
     /// <summary>
     /// Opens the FilterOptionPopup with the FilterOptionList.
     /// </summary>
-
     public override void OpenFilterOptionPopup()
     {
         base.OpenFilterOptionPopup();
@@ -47,7 +44,6 @@ public class GridFilterRowCellExt : GridFilterRowCell
     /// Populates the FilterOption list which will loaded in FilterOptionPopup for ShipAddress.
     /// </summary>
     /// <returns></returns>
-
     private new ObservableCollection<string> OptionsList()
     {
         var list = new ObservableCollection<string>();
@@ -64,14 +60,13 @@ public class GridFilterRowCellExt : GridFilterRowCell
 public class GridFilterRowTextBoxRendererExt : GridFilterRowTextBoxRenderer , INotifyPropertyChanged
 {
     public FilterType customfilterType { get; set; }
-    public GridFilterRowTextBoxRendererExt()
-        : base()
+
+    public GridFilterRowTextBoxRendererExt(): base()
     {
     }
 
     public override void OnFilterRowConditionChanged(string filterRowCondition)
     {
-        
         switch (filterRowCondition)
         {
             case "Contains":
@@ -95,7 +90,6 @@ public class GridFilterRowTextBoxRendererExt : GridFilterRowTextBoxRenderer , IN
             default:
                 customfilterType = FilterType.Equals;
                 break;
-
         }
     }
 
@@ -158,7 +152,6 @@ public class GridFilterRowTextBoxRendererExt : GridFilterRowTextBoxRenderer , IN
         return filterPredicates;
     }
    
-
     public event PropertyChangedEventHandler PropertyChanged;
 
     private void OnPropertyChanged(String prop)
@@ -170,10 +163,10 @@ public class GridFilterRowTextBoxRendererExt : GridFilterRowTextBoxRenderer , IN
         }
     }
 }
+
 public class CustomRowGenerator : RowGenerator
 {
-    public CustomRowGenerator(SfDataGrid dataGrid)
-        : base(dataGrid)
+    public CustomRowGenerator(SfDataGrid dataGrid) : base(dataGrid)
     {
     }
 
@@ -182,26 +175,16 @@ public class CustomRowGenerator : RowGenerator
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <returns>GridCell</returns>
-
     protected override GridCell GetGridCell<T>()
     {
-
         //If the Cell is FilterRowCell return custom FilterRowCell
-
         if (typeof(T) == typeof(GridFilterRowCell))
             return new GridFilterRowCellExt();
         return base.GetGridCell<GridCell>();
     }
 }
-
-
 ```
 
-![CustomFilterOption](image1.png)
+![DataGrid showing the filter row before filtering](FilterRowBeforeFiltering.png)
 
-![CustomFilteredGrid](image2.png)
-
-KB article - [How to implement the custom Like filter in WPF DataGrid (SfDataGrid) FilterRow?](https://www.syncfusion.com/kb/11880/how-to-implement-the-custom-like-filter-in-wpf-datagrid-sfdatagrid-filterrow)
-
-## Requirements to run the demo
-Visual Studio 2015 and above versions
+![DataGrid showing with custom filter applied](CustomFilterApplied.png)
