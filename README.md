@@ -1,6 +1,6 @@
 # How to Implement the Custom Like Filter in WPF DataGrid FilterRow? 
 
-This sample illustrates how to implement the custom Like filter in [WPF DataGrid](https://www.syncfusion.com/wpf-ui-controls/datagrid) (SfDataGrid) FilterRow.
+This sample illustrates how to implement the custom Like filter in [WPF DataGrid](https://www.syncfusion.com/wpf-controls/datagrid) (SfDataGrid) FilterRow.
 
 The `TextBox` editor will display the string related conditions like Begins With, Does Not Begin With, Ends With, Does Not End With, Contains, Does Not Contain, Empty, Not Empty filter row conditions in drop down by default in `DataGrid`. You can display custom filter row conditions (Like and Not Like) in TextBox editor by overriding the [OpenFilterOptionPopup](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.RowFilter.GridFilterRowCell.html#Syncfusion_UI_Xaml_Grid_RowFilter_GridFilterRowCell_OpenFilterOptionPopup) method in a [GridFilterRowCell](https://help.syncfusion.com/cr/wpf/Syncfusion.UI.Xaml.Grid.RowFilter.GridFilterRowCell.html) class.
 
